@@ -8,6 +8,9 @@ jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        browser: [chromium, firefox, webkit]
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-node@v4
@@ -17,13 +20,8 @@ jobs:
       run: npm ci
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
-    strategy:
-      matrix:
-        browser: [chromium, firefox, webkit]
-    steps:
-      ...
-      - name: Run Playwright tests
-        run: npx playwright test --project=${{ matrix.browser }}
+    - name: Run Playwright tests
+      run: npx playwright test --project=${{ matrix.browser }}
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:
