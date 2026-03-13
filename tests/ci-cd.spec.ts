@@ -44,5 +44,5 @@ test('user can complete checkout', async ({ page }) => {
   await page.locator('[data-test="continue"]').click();
   await page.locator('[data-test="finish"]').click();
 
-  await expect(page.locator('.complete-header')).toHaveText('THANK YOU FOR YOUR ORDER');
+  await expect(page.locator('.complete-header')).toHaveText('Thank you for your order!');
 });
