@@ -1,9 +1,9 @@
-import { test, expect } from '@playwright/test';
+import { test, expect, Page } from '@playwright/test';
 
 const BASE_URL = 'https://www.saucedemo.com';
 
 // Helper to login
-async function login(page) {
+async function login(page : Page) {
   await page.goto(BASE_URL);
   await page.locator('[data-test="username"]').fill('standard_user');
   await page.locator('[data-test="password"]').fill('secret_sauce');
