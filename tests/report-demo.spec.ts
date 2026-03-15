@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-// ✅ PASS — clean happy path
+//happy path
 test('Login page loads correctly @smoke', async ({ page }) => {
   test.info().annotations.push({ type: 'story', description: 'AUTH-101' });
 
@@ -11,7 +11,7 @@ test('Login page loads correctly @smoke', async ({ page }) => {
   await expect(page.locator('[data-test="login-button"]')).toBeVisible();
 });
 
-// ✅ PASS — successful login flow
+//successful login flow
 test('Successful login shows inventory @smoke @critical', async ({ page }) => {
   test.info().annotations.push({ type: 'story', description: 'AUTH-102' });
 
@@ -24,7 +24,7 @@ test('Successful login shows inventory @smoke @critical', async ({ page }) => {
   await expect(page.locator('.inventory_list')).toBeVisible();
 });
 
-// ✅ PASS — locked out user sees error message
+//locked out user sees error message
 test('Locked out user sees error message @regression', async ({ page }) => {
   test.info().annotations.push({ type: 'story', description: 'AUTH-103' });
 
@@ -37,7 +37,7 @@ test('Locked out user sees error message @regression', async ({ page }) => {
   await expect(page.locator('[data-test="error"]')).toContainText('Sorry, this user has been locked out');
 });
 
-// ✅ PASS — correct product count
+//correct product count
 test('Product count is correct @regression', async ({ page }) => {
   test.info().annotations.push({ type: 'story', description: 'SHOP-201' });
 
@@ -50,7 +50,7 @@ test('Product count is correct @regression', async ({ page }) => {
   await expect(items).toHaveCount(6);
 });
 
-// ✅ PASS — add item to cart
+//add item to cart
 test('Add item to cart @smoke', async ({ page }) => {
   test.info().annotations.push({ type: 'story', description: 'SHOP-101' });
   test.info().annotations.push({ type: 'severity', description: 'critical' });
